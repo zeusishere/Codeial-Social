@@ -1,0 +1,31 @@
+<%- include("./partials/_header") %>
+//create a post
+    <% if(locals.user) { %>
+        <form action="/post/create" method="post" id ="new-post-form">
+            <textarea name="content" id="content" cols="30" rows="3" placeholder="enter your Post here" required></textarea>
+            <br>
+            <button type="submit" id="create-post" >Post</button>
+        </form>
+    <% }%>
+
+
+            <div id="posts-list-container">
+                <h2>Posts</h2>
+                <ul>
+                    <!-- display posts here -->
+                    <% for(post of posts) { %>
+                        <%-include("./partials/_postview") -%>
+                   <% }%>    
+                </ul>
+            </div>
+        <!-- display all friends -->
+        <section id="user-friends">
+            <h4>friends</h4>
+            <% for( u of all_users) { %>
+                <p>
+                    <a href="/user/profile/<%=u.id%>">
+                    <%=u.name%>
+                    </a>
+                </p>
+                <%}%>
+        </section>

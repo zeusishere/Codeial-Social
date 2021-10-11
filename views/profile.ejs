@@ -1,0 +1,23 @@
+<%- include("./partials/_header") %>
+    <% if( user.id==profile_user.id ){ %>
+        <h2>update details</h2>
+        <form action="/user/update/<%= user.id %>" method="post">
+        <input type="text" name="name" id="" value="<%=user.name %>">
+        <input type="email" name="email" id="" value="<%=user.email %>">
+        <button type="submit">Update details</button>
+        </form>
+        <%}else {%>
+
+            <h2>
+                <%=profile_user.name %>
+            </h2>
+            <h2>
+                <%=profile_user.email %>
+            </h2>
+            <h2>
+                <%=profile_user.password %>
+            </h2>
+
+
+            <%} %>
+                <%- include("./partials/_footer") %>

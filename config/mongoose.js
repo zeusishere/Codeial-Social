@@ -9,3 +9,4 @@ db.once("open" , function()
     console.log("successfully connected to database in config folder ");
 } );
 // include this file before firing up the server
+module.exports = db ;

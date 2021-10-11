@@ -1,7 +1,7 @@
-form
-{
-    background-color:darkslategray;
-}
+
 button{
     background-color:rgb(252, 231, 42);
+}
+body{
+    background-color: blue;
 }

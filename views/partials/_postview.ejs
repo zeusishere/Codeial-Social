@@ -1,0 +1,32 @@
+<!-- code inside for post loop -->
+<li  id="post-<%=post.id%>">
+    <p>
+        <%=post.content %>
+            <br>
+            <%=post.user.name %>
+    </p>
+    <% if(locals.user) { %>
+        <!-- delete button for posts -->
+        <% if(locals.user && locals.user.id==post.user.id ){ %>
+            <small><a href="/post/destroy/<%=post.id%>" class="delete-post-button post-delete-link">delete</a></small>
+            <% }%>
+                <div class="post-comments">
+                    <!-- create comments -->
+                    <form action="/comment/create" method="POST" class="new-comment-form">
+                        <textarea name="content" id="" cols="30" rows="2" placeholder="type here to add comment"
+                            required></textarea>
+                        <input type="hidden" name="post" value="<%=post._id%>">
+                        <button type="submit" class="create-comment">comment now</button>
+                        
+                    </form>
+                    <% }%>
+                        <div class="post-comments-list">
+                            <ul id="post-comments-<%=post._id%>">
+                                <% for(comment of post.comments ) { %>
+                                    <!-- include comments here from post -->
+                                    <%- include("./_commentview.ejs") %>
+                                        <% }%>
+                            </ul>
+                        </div>
+                </div>
+</li>
